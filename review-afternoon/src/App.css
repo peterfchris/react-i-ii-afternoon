@@ -20,9 +20,36 @@ h3 {
 
 .white-container {
   height: 60vh;
-  width: 80vw;
+  width: 75vw;
   background: #EBEBEB;
   margin: 20vh 10vw 0;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  padding-left: 5%;
+  padding-right: -5%;
+}
+
+p {
+  line-height: 70%;
+}
+li {
+  line-height: 1.4rem;
+}
+
+.user-name {
+  text-decoration: underline;
+  text-decoration-color: #34A5DA;
+}
+
+.count {
+  position: absolute;
+  padding-left: 68%;
+}
+
+.main-content {
+  position: absolute;
+  text-align: left;
 }
 
 .buttons {
@@ -32,6 +59,10 @@ h3 {
   height: 5vh;
   width: 80vw;
   margin: 0 10vw;
+}
+
+.buttons :hover{
+  cursor: pointer;
 }
 
 .previous {
