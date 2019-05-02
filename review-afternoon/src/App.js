@@ -1,21 +1,55 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
+import Navigation from './Components/Navigation';
+// import State from './Components/State'
+import Layout from './Components/Layout'
+import data from './data'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="header">
-      <h3>Home</h3>
-      </header>
-      <div className="white-container">
+class App extends Component {
+  constructor() {
+    super()
 
+    this.state = {
+      users: [],
+      page: 1
+    }
+    this.nextPage = this.nextPage.bind(this);
+    this.previousPage = this.previousPage.bind(this)
+  }
+
+  componentDidMount(){
+    this.setState({
+      users: data
+    })
+  }
+
+  nextPage(){
+    this.setState({
+      page: this.state.page + 1
+    })
+  }
+
+  previousPage(){
+    this.setState({
+      page: this.state.page - 1
+    })
+  }
+
+
+  render() {
+    const user = this.state.users.filter((user) => {
+        return user.id === this.state.page
+    }) 
+    console.log(user)
+    return (
+      <div className="App">
+
+        <Layout user={user}/>
+        <Navigation nextPage={this.nextPage} previousPage={this.previousPage}/>
       </div>
-      <div className="buttons">
-        <button className="previous">{'< Previous'}</button>
-        <button className="next">{'Next >'}</button>
-      </div>
-    </div>
-  );
+    );
+  }
 }
+
 
 export default App;
